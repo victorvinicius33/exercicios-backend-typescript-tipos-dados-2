@@ -19,7 +19,7 @@ console.log(readFile());
 
 //02
 
-type Adress = {
+type Address = {
   cep: string,
   street: string,
   complement?: string,
@@ -32,7 +32,7 @@ type User = {
   email: string,
   cpf: string,
   occupation?: string,
-  address?: Adress
+  address?: Address
 }
 
 const signUp = (userData: User): User => {
@@ -63,3 +63,6 @@ const victor = signUp({
 
 const bd = readFile();
 console.log(victor, bd);
+
+//03
+
