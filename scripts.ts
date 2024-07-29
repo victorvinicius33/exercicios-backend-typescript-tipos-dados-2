@@ -35,7 +35,7 @@ type User = {
   address?: Address
 }
 
-const creatUser = (userData: User): User => {
+const createUser = (userData: User): User => {
   const bd = readFile() as User[];
 
   bd.push(userData);
@@ -81,7 +81,7 @@ const updateUser = (cpf: string, data: User): User => {
   return data;
 }
 
-const victor = creatUser({
+const victor = createUser({
   name: 'Victor',
   email: 'victor@gmail.com',
   cpf: '12345678901',
@@ -92,6 +92,25 @@ const victor = creatUser({
     city: 'Recife'
   }
 });
+
+const deleteUser = (cpf: string): User => {
+  const bd = readFile() as User[];
+  const user = bd.find(user => {
+    return user.cpf === cpf;
+  });
+
+  if (!user) {
+    throw new Error('Usuário não encontrado!');
+  }
+
+  const deletingUser = bd.filter(user => {
+    return user.cpf !== cpf
+  });
+
+  writeFile(deletingUser);
+
+  return user;
+}
 
 const victorUser = detailUser('12345678901');
 
@@ -106,6 +125,8 @@ updateUser('12345678901', {
     city: 'Recife'
   }
 });
+
+console.log(deleteUser('12345678901'));
 
 const bd = readFile();
 console.log(victor, bd);
