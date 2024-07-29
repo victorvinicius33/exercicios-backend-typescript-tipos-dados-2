@@ -35,7 +35,7 @@ type User = {
   address?: Address
 }
 
-const signUp = (userData: User): User => {
+const creatUser = (userData: User): User => {
   const bd = readFile() as User[];
 
   bd.push(userData);
@@ -81,7 +81,7 @@ const updateUser = (cpf: string, data: User): User => {
   return data;
 }
 
-const victor = signUp({
+const victor = creatUser({
   name: 'Victor',
   email: 'victor@gmail.com',
   cpf: '12345678901',
