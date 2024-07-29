@@ -112,6 +112,16 @@ const deleteUser = (cpf: string): User => {
   return user;
 }
 
+const filterUserByOccupation = (occupation: string): User[] => {
+  const bd = readFile() as User[];
+
+  const users = bd.filter(user => {
+    return user.occupation === occupation;
+  });
+
+  return users;
+}
+
 const victorUser = detailUser('12345678901');
 
 updateUser('12345678901', {
@@ -131,4 +141,4 @@ console.log(deleteUser('12345678901'));
 const bd = readFile();
 console.log(victor, bd);
 
-
+console.log(filterUserByOccupation('backend'));
